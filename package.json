@@ -1,6 +1,6 @@
 {
   "name": "graphql-server-servie",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Production-ready Node.js GraphQL server for Servie",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
