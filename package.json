@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "get-body": "^1.0.2",
-    "graphql-server-core": "^0.7.0",
+    "graphql-server-core": "^0.8.0",
     "graphql-server-module-graphiql": "^0.7.2",
     "servie-send": "0.0.1"
   }
