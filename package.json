@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/graphql": "^0.9.1",
     "@types/jest": "^19.2.3",
-    "@types/node": "^7.0.18",
+    "@types/node": "^8.0.0",
     "graphql": "^0.9.6",
     "jest": "^20.0.0",
     "rimraf": "^2.5.4",
