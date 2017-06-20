@@ -50,7 +50,7 @@
   },
   "peerDependencies": {
     "servie": "^0.2.0",
-    "graphql": "*"
+    "graphql": ">=0.10.2"
   },
   "jest": {
     "transform": {
