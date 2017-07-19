@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
-      "es2015"
+      "es2015",
+      "esnext.asynciterable"
     ],
     "rootDir": "src",
     "outDir": "dist",
@@ -20,7 +21,6 @@
     "inlineSources": true
   },
   "include": [
-    "src/**/*",
-    "typings/**/*"
+    "src/**/*"
   ]
 }
