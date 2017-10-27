@@ -50,9 +50,9 @@ export function graphiqlServie (options: GraphiQLData) {
     const graphiQLString = renderGraphiQL({
       endpointURL: options.endpointURL,
       subscriptionsEndpoint: options.subscriptionsEndpoint,
-      query: query || options.query,
-      variables: variables && JSON.parse(variables) || options.variables,
-      operationName: operationName || options.operationName,
+      query: String(query) || options.query,
+      variables: variables ? JSON.parse(String(variables)) : options.variables,
+      operationName: String(operationName) || options.operationName,
       passHeader: options.passHeader
     })
 
