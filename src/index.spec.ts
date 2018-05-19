@@ -1,5 +1,6 @@
 import { graphqlServie, graphiqlServie } from './index'
 import { Request } from 'servie'
+import { createBody } from 'servie/dist/body/universal'
 import { GraphQLSchema, GraphQLString, GraphQLObjectType } from 'graphql'
 
 describe('graphql server servie', () => {
@@ -24,15 +25,15 @@ describe('graphql server servie', () => {
       const req = new Request({
         url: '/',
         method: 'POST',
-        body: {
+        body: createBody({
           query: '{testString}'
-        }
+        })
       })
 
       const res = await handler(req)
-      const body = await res.text()
+      const body = await res.body.text()
 
-      expect(res.type).toEqual('application/json')
+      expect(res.headers.get('Content-Type')).toEqual('application/json')
       expect(body).toEqual('{"data":{"testString":"it works"}}')
     })
   })
@@ -44,7 +45,7 @@ describe('graphql server servie', () => {
       const req = new Request({ url: '/' })
       const res = await handler(req)
 
-      expect(res.type).toBe('text/html')
+      expect(res.headers.get('Content-Type')).toBe('text/html')
     })
   })
 })

@@ -1,9 +1,9 @@
-import { Request, Response } from 'servie'
+import { Request, Response, createHeaders, HeadersObject } from 'servie'
+import { createBody } from 'servie/dist/body/universal'
 import { parse as parseQuery } from 'querystring'
-import { send } from 'servie-send'
-import { parse } from 'get-body'
-import { GraphQLOptions, runHttpQuery } from 'graphql-server-core'
-import { renderGraphiQL, GraphiQLData } from 'graphql-server-module-graphiql'
+import { sendHtml } from 'servie-send'
+import { GraphQLOptions, runHttpQuery } from 'apollo-server-core'
+import { renderGraphiQL, GraphiQLData } from 'apollo-server-module-graphiql'
 
 export type GraphQLOptionsFunction = (req: Request) => GraphQLOptions | Promise<GraphQLOptions>
 export type ServieHandler = (req: Request) => Promise<Response>
@@ -14,27 +14,25 @@ export type ServieHandler = (req: Request) => Promise<Response>
 export function graphqlServie (options: GraphQLOptions | GraphQLOptionsFunction): ServieHandler {
   return async function (req: Request): Promise<Response> {
     const { method } = req
-    const query = method === 'POST' ? await parse(req.stream(), req.headers.object()) : parseQuery(req.Url.query)
+    const query = method === 'POST' ? await req.body.json() : parseQuery(req.Url.query as string)
 
     try {
       const gqlResponse = await runHttpQuery([req], { method, options, query })
 
       return new Response({
-        headers: {
+        headers: createHeaders({
           'Content-Type': 'application/json',
           'Content-Length': Buffer.byteLength(gqlResponse).toString()
-        },
-        body: gqlResponse
+        }),
+        body: createBody(gqlResponse)
       })
     } catch (err) {
-      if (err.name !== 'HttpQueryError') {
-        throw err
-      }
+      if (err.name !== 'HttpQueryError') throw err
 
       return new Response({
-        headers: err.headers,
-        status: err.statusCode,
-        body: err.message
+        statusCode: err.statusCode,
+        headers: createHeaders(err.headers as HeadersObject),
+        body: createBody(err.message as string)
       })
     }
   }
@@ -45,7 +43,7 @@ export function graphqlServie (options: GraphQLOptions | GraphQLOptionsFunction)
  */
 export function graphiqlServie (options: GraphiQLData) {
   return async function (req: Request) {
-    const { query, variables, operationName } = parseQuery(req.Url.query)
+    const { query, variables, operationName } = parseQuery(req.Url.query as string)
 
     const graphiQLString = renderGraphiQL({
       endpointURL: options.endpointURL,
@@ -56,6 +54,6 @@ export function graphiqlServie (options: GraphiQLData) {
       passHeader: options.passHeader
     })
 
-    return send(req, graphiQLString, { type: 'text/html' })
+    return sendHtml(req, graphiQLString)
   }
 }

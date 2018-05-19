@@ -1,26 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "es2015",
-      "esnext.asynciterable"
-    ],
+    "target": "es2015",
+    "lib": ["es2015", "dom", "esnext.asynciterable"],
     "rootDir": "src",
     "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
+    "strict": true,
+    "stripInternal": true,
     "declaration": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strictNullChecks": true,
-    "removeComments": false,
     "sourceMap": true,
     "inlineSources": true
-  },
-  "include": [
-    "src/**/*"
-  ]
+  }
 }
