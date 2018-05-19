@@ -1,5 +1,5 @@
 {
-  "name": "graphql-server-servie",
+  "name": "apollo-server-servie",
   "version": "0.3.0",
   "description": "Production-ready Node.js GraphQL server for Servie",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/serviejs/graphql-server-servie.git"
+    "url": "git://github.com/serviejs/apollo-server-servie.git"
   },
   "keywords": [
     "servie",
@@ -31,9 +31,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/serviejs/graphql-server-servie/issues"
+    "url": "https://github.com/serviejs/apollo-server-servie/issues"
   },
-  "homepage": "https://github.com/serviejs/graphql-server-servie",
+  "homepage": "https://github.com/serviejs/apollo-server-servie",
   "jest": {
     "transform": {
       ".(ts|tsx)": "ts-jest/preprocessor.js"

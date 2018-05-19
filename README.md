@@ -1,26 +1,26 @@
-# GraphQL Server Servie
+# Apollo Server Servie
 
-[![NPM version](https://img.shields.io/npm/v/graphql-server-servie.svg?style=flat)](https://npmjs.org/package/graphql-server-servie)
-[![NPM downloads](https://img.shields.io/npm/dm/graphql-server-servie.svg?style=flat)](https://npmjs.org/package/graphql-server-servie)
-[![Build status](https://img.shields.io/travis/serviejs/graphql-server-servie.svg?style=flat)](https://travis-ci.org/serviejs/graphql-server-servie)
-[![Test coverage](https://img.shields.io/coveralls/serviejs/graphql-server-servie.svg?style=flat)](https://coveralls.io/r/serviejs/graphql-server-servie?branch=master)
+[![NPM version](https://img.shields.io/npm/v/apollo-server-servie.svg?style=flat)](https://npmjs.org/package/apollo-server-servie)
+[![NPM downloads](https://img.shields.io/npm/dm/apollo-server-servie.svg?style=flat)](https://npmjs.org/package/apollo-server-servie)
+[![Build status](https://img.shields.io/travis/serviejs/apollo-server-servie.svg?style=flat)](https://travis-ci.org/serviejs/apollo-server-servie)
+[![Test coverage](https://img.shields.io/coveralls/serviejs/apollo-server-servie.svg?style=flat)](https://coveralls.io/r/serviejs/apollo-server-servie?branch=master)
 
 > Production-ready Node.js GraphQL server for Servie.
 
 ## Installation
 
 ```
-npm install graphql-server-servie --save
+npm install apollo-server-servie --save
 ```
 
 ## Usage
 
-Related: http://dev.apollodata.com/tools/graphql-server/index.html
+Related: https://www.apollographql.com/docs/apollo-server/
 
 ```ts
 import { compose } from 'throwback'
 import { get, all } from 'servie-route'
-import { graphqlServie, graphiqlServie } from 'graphql-server-servie'
+import { graphqlServie, graphiqlServie } from 'apollo-server-servie'
 
 const app = compose([
   all('/graphql', graphqlServie({ schema })),
