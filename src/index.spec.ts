@@ -34,7 +34,7 @@ describe('graphql server servie', () => {
       const body = await res.body.text()
 
       expect(res.headers.get('Content-Type')).toEqual('application/json')
-      expect(body).toEqual('{"data":{"testString":"it works"}}')
+      expect(body).toEqual('{"data":{"testString":"it works"}}\n')
     })
   })
 

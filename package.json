@@ -36,7 +36,7 @@
   "homepage": "https://github.com/serviejs/apollo-server-servie",
   "jest": {
     "transform": {
-      ".(ts|tsx)": "ts-jest/preprocessor.js"
+      ".(ts|tsx)": "ts-jest"
     },
     "testRegex": "src/.*\\.(?:test|spec)\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
@@ -46,25 +46,25 @@
     ]
   },
   "devDependencies": {
-    "@types/graphql": "^0.13.1",
-    "@types/jest": "^22.2.3",
+    "@types/graphql": "^14.0.3",
+    "@types/jest": "^23.3.10",
     "@types/node": "^10.1.2",
-    "graphql": "^0.13.2",
-    "jest": "^22.4.4",
+    "graphql": "^14.0.2",
+    "jest": "^23.6.0",
     "rimraf": "^2.5.4",
     "servie": "^3.0.0",
-    "throwback": "^2.0.0",
-    "ts-jest": "^22.4.6",
+    "throwback": "^4.0.0",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.10.0",
-    "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.8.3"
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.2.2"
   },
   "peerDependencies": {
     "servie": "^3.0.0",
     "graphql": "*"
   },
   "dependencies": {
-    "apollo-server-core": "^1.3.6",
+    "apollo-server-core": "^2.2.6",
     "apollo-server-module-graphiql": "^1.3.4",
     "servie-send": "^1.1.0"
   }
