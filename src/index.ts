@@ -17,12 +17,23 @@ export function graphqlServie (options: GraphQLOptions | GraphQLOptionsFunction)
     const query = method === 'POST' ? await req.body.json() : parseQuery(req.Url.query as string)
 
     const request = { method, url: req.url, headers: req.headers as any }
-    const gqlResponse = await runHttpQuery([req], { method, options, query, request })
 
-    return new Response({
-      headers: createHeaders(gqlResponse.responseInit.headers),
-      body: createBody(gqlResponse.graphqlResponse)
-    })
+    try {
+      const gqlResponse = await runHttpQuery([req], { method, options, query, request })
+
+      return new Response({
+        headers: createHeaders(gqlResponse.responseInit.headers),
+        body: createBody(gqlResponse.graphqlResponse)
+      })
+    } catch (err) {
+      if (err.name !== 'HttpQueryError') throw err
+
+      return new Response({
+        statusCode: err.statusCode,
+        headers: createHeaders(err.headers as HeadersObject),
+        body: createBody(err.message as string)
+      })
+    }
   }
 }
 
