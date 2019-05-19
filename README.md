@@ -18,14 +18,14 @@ npm install apollo-server-servie --save
 Related: https://www.apollographql.com/docs/apollo-server/
 
 ```ts
-import { compose } from 'throwback'
-import { get, all } from 'servie-route'
-import { graphqlServie, graphiqlServie } from 'apollo-server-servie'
+import { compose } from "throwback";
+import { get, all } from "servie-route";
+import { graphqlServie, graphiqlServie } from "apollo-server-servie";
 
 const app = compose([
-  all('/graphql', graphqlServie({ schema })),
-  get('/graphiql', graphiqlServie({ endpointURL: `./graphql` }))
-])
+  all("/graphql", graphqlServie({ schema })),
+  get("/graphiql", graphiqlServie({ endpointURL: `./graphql` }))
+]);
 ```
 
 ## TypeScript
