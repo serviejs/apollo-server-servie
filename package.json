@@ -77,7 +77,7 @@
     "typescript": "^3.2.2"
   },
   "peerDependencies": {
-    "servie": "^3.0.0",
+    "servie": "^4.0.0",
     "graphql": "*"
   },
   "dependencies": {
