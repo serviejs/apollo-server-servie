@@ -4,18 +4,19 @@ import { sendHtml } from "servie-send";
 import { GraphQLOptions, runHttpQuery } from "apollo-server-core";
 import { renderGraphiQL, GraphiQLData } from "apollo-server-module-graphiql";
 
-export type GraphQLOptionsFunction = (
-  req: Request
+export type GraphQLOptionsFunction<T extends Request> = (
+  req: T
 ) => GraphQLOptions | Promise<GraphQLOptions>;
-export type ServieHandler = (req: Request) => Promise<Response>;
+
+export type ServieHandler<T extends Request> = (req: T) => Promise<Response>;
 
 /**
  * Create a GraphQL server endpoint.
  */
-export function graphqlServie(
-  options: GraphQLOptions | GraphQLOptionsFunction
-): ServieHandler {
-  return async function(req: Request): Promise<Response> {
+export function graphqlServie<T extends Request>(
+  options: GraphQLOptions | GraphQLOptionsFunction<T>
+): ServieHandler<T> {
+  return async function(req: T): Promise<Response> {
     const { method } = req;
     const query =
       method === "POST" ? await req.json() : parse(req.url, true).query;
